@@ -4,9 +4,12 @@ var userService = require('../services/user.service');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  let users = userService.getAllUsers();
-
-  res.send(users);
+  userService.getAllUsers().then ((users) => {
+    res.send(users);
+  }).catch ( (e)  => {
+    console.log(e);
+    res.status(500).send({message: e.message});
+  }) 
 });
 
 module.exports = router;

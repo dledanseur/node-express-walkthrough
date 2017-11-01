@@ -1,11 +1,8 @@
+var UserRepository = require('../repositories/UserRepository');
+
 class UserService {
   getAllUsers() {
-    return [
-      {
-        name: "John",
-        email: "jdoe@example.com"
-      }
-    ]
+    return UserRepository.findAll();
   }
 }
 
