@@ -13,6 +13,10 @@ class UserRepository {
  findAll() {
    return this.UserModel.findAll();
  }
+
+ saveUser(user) {
+   return this.UserModel.create(user)
+ }
 }
 module.exports = new UserRepository();
 

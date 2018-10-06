@@ -12,4 +12,18 @@ router.get('/', function(req, res, next) {
   }) 
 });
 
+router.post('/', function(req, res, next) {
+  let user = {
+    name: req.body.name,
+    email: req.body.email
+  }
+
+  userService.saveUser(user).then ( (user) => {
+    res.send(user);
+  }).catch ( (e) => {
+    console.log(e);
+    res.status(500).send({message: e.message});
+  })
+});
+
 module.exports = router;
